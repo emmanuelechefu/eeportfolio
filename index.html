@@ -3,336 +3,488 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Emmanuel Echefu – Portfolio</title>
+  <title>Emmanuel Echefu • Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap" />
   <style>
-    :root {
-      --accent: #72c7cf; /* default (about me) */
-      --bg: #ffffff;
-      --ink: #111;
-      --muted: #8ca3af;
-      --card-bg: #fff;
-      --card-hover: #f5f7f7;
-      --shadow: 0 10px 25px rgba(0,0,0,.04);
-      --radius: 28px;
-      --spine-height: 3px;
+    :root{
+      --bg:#ffffff;
+      --ink:#0a0a0a;
+      --muted:#f4f6f8;
+      --line:#d9dee3;
+      --shadow:0 6px 20px rgba(0,0,0,.06);
+      /* section brand colors */
+      --c-about:#55c2d6;     /* teal */
+      --c-projects:#ff7c7c;  /* coral */
+      --c-skills:#f7c14c;    /* amber */
+      --c-experience:#a79bff;/* violet */
+      --c-articles:#74f7c5;  /* mint */
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background:var(--bg); color:var(--ink);
+      font-family:'Space Mono',monospace; letter-spacing:.5px;
     }
 
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body {
-      margin: 0;
-      font-family: 'Space Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      color: var(--ink);
-      background: var(--bg);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+    /* --- HERO --- */
+    .hero{
+      min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px;
+      opacity:0; transform:translateY(14px); animation:heroIn .8s ease forwards .35s;
     }
+    @keyframes heroIn{to{opacity:1; transform:none}}
+    h1{font-size:clamp(28px,4.5vw,48px); margin:0;}
+    h2{font-size:clamp(18px,2.6vw,28px); margin:0; opacity:.85}
 
-    /* HERO */
-    .hero {
-      min-height: 66vh;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      padding-top: 3rem;
-      padding-bottom: 2rem;
-    }
-    .title {
-      font-size: clamp(34px, 5vw, 64px);
-      font-weight: 700;
-      letter-spacing: 1px;
-      margin: 0 0 .4rem 0;
-    }
-    .subtitle {
-      font-size: clamp(18px, 3vw, 28px);
-      margin: 0;
-      color: #222;
-    }
+    .quick-links{display:flex; gap:14px; margin-top:10px}
+    .chip{border:2px solid #000; padding:10px 14px; border-radius:12px; text-decoration:none; color:inherit; transition:transform .15s ease, background .2s}
+    .chip:hover{transform:translateY(-2px); background:#fff}
 
-    /* NAV WRAPPER */
-    .nav-wrap {
-      position: relative;
-      width: min(1100px, 92vw);
-      margin: 2.25rem auto 0;
-    }
-    .spine {
-      position: absolute;
-      left: 0; right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      height: var(--spine-height);
-      background: color-mix(in oklab, var(--accent) 65%, white);
-      border-radius: 999px;
-      transition: background .35s ease;
-      opacity: .75;
-    }
+    /* --- NAV RAIL --- */
+    .nav-wrap{position:relative; width:100%;}
+    .home-rail{position:fixed; left:0; right:0; bottom:0; z-index:40;}
+    .nav-rail{position:relative; display:flex; align-items:center; justify-content:center; gap:36px; padding:32px 20px 48px;}
+    .rail-line{position:absolute; left:0; right:0; height:4px; top:58px; background:var(--line); transition:background .25s ease}
 
-    .nav {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      align-items: center;
-      gap: clamp(14px, 2.5vw, 28px);
-      position: relative;
-    }
+    .nav-card{position:relative; width:min(190px,22vw); max-width:220px; 
+      background:#fff; border:3px solid var(--line); border-radius:28px; padding:20px 22px; box-shadow:var(--shadow);
+      display:flex; flex-direction:column; align-items:center; gap:8px; cursor:pointer; transition:transform .25s ease, background .25s ease, border-color .25s ease, opacity .2s}
+    .nav-card .icon{font-family:'Material Symbols Outlined'; font-size:40px; line-height:1; color:#9aa3ad; transition:color .25s ease}
+    .nav-card.hovering .icon, .nav-card:focus-visible .icon{color:var(--accent)}
+    .nav-card.dimmed{opacity:1}
+    .nav-card.dimmed .icon{color:#c3cad2}
+    .nav-card .label{transition:opacity .25s ease, color .25s ease}
+    .nav-card.dimmed .label{color:#a9b0b7}
+    .nav-card .label{font-size:20px}
+    .nav-card.hovering{background:var(--muted)}
+    .nav-card.dimmed{opacity:1}
 
-    .card {
-      position: relative;
-      background: var(--card-bg);
-      border: 3px solid color-mix(in oklab, var(--accent) 45%, white);
-      border-radius: var(--radius);
-      padding: 26px 10px 22px;
-      display: grid;
-      gap: 10px;
-      justify-items: center;
-      box-shadow: var(--shadow);
-      cursor: pointer;
-      transition: transform .28s ease, background .25s ease, border-color .25s ease, box-shadow .25s ease;
-      user-select: none;
-    }
-    .card:hover { background: var(--card-hover); }
-    .card .label { font-size: clamp(14px, 2vw, 20px); }
+    /* click/drop animation */
+    .nav-card.drop{transform:translateY(10px)}
 
-    .icon {
-      width: clamp(44px, 6vw, 58px);
-      height: clamp(44px, 6vw, 58px);
-      display: inline-block;
-    }
-    .icon svg { width: 100%; height: 100%; display: block; }
+    /* Docked state at top */
+    .nav-bar{position:fixed; left:0; right:0; top:-100px; background:rgba(255,255,255,.92); backdrop-filter:saturate(1.2) blur(6px); box-shadow:0 8px 30px rgba(0,0,0,.08); z-index:50;}
+    .nav-bar .rail-line{top:auto; bottom:-2px}
+    .nav-bar.show{animation:barSlideIn .8s cubic-bezier(.2,.7,.2,1)}
+    @keyframes barSlideIn{from{top:100vh} to{top:0}}
 
-    .card.selected { transform: translateY(14px); }
+    .home-btn{position:fixed; right:24px; top:22px; width:44px; height:44px; border-radius:10px; border:3px solid #000; display:grid; place-items:center; cursor:pointer; z-index:60; background:#fff; box-shadow:var(--shadow);} 
+    
+    .project p,
+    .skill-list > div,
+    .project-description { white-space: pre-line; }
 
-    /* DOCKED STATE */
-    .dock .hero { min-height: 140px; padding-top: 18px; }
-    .dock .title { font-size: clamp(22px, 3.2vw, 36px); }
-    .dock .subtitle { font-size: clamp(12px, 2vw, 16px); }
+    .x-description { white-space: pre-line; }
 
-    .nav-bar {
-      position: sticky;
-      top: 0;
-      z-index: 30;
-      background: linear-gradient(#fff 80%, transparent);
-      padding: 10px 0 22px;
-      transition: box-shadow .35s ease, border-color .35s ease;
-    }
-    .dock .nav-bar { box-shadow: 0 8px 30px rgba(0,0,0,.06); }
+    
+    
+    
 
-    /* SECTIONS */
-    main { width: min(1100px, 92vw); margin: 0 auto; }
-    section { padding: 36px 0 80px; min-height: 50vh; }
-    section h2 { color: var(--accent); letter-spacing: 1px; }
+    /* --- SECTIONS --- */
+    section{padding:120px 8vw 80px; display:none; opacity:0}
+    section.active{display:block; animation:sectionIn .6s ease forwards}
+    @keyframes sectionIn{from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:none}}
 
-    .hidden { display: none; }
-    .fade-enter { opacity: 0; transform: translateY(10px); }
-    .fade-enter-active { opacity: 1; transform: none; transition: opacity .45s ease, transform .45s ease; }
+    .sec-title{font-size:40px; letter-spacing:2px; margin:0 0 26px}
 
-    /* HOME BUTTON */
-    .home-btn {
-      position: fixed;
-      right: 22px; top: 18px;
-      width: 40px; height: 40px;
-      border-radius: 10px;
-      display: grid; place-items: center;
-      cursor: pointer;
-      background: #0000;
-      transition: transform .2s ease, background .2s ease;
-      z-index: 40;
-      opacity: 0; pointer-events: none;
-    }
-    .home-btn:hover { background: #f3f3f3; }
-    .dock .home-btn { opacity: 1; pointer-events: auto; }
+    /* ABOUT text */
+    .copy{font-size:20px; line-height:1.7; max-width:1100px}
 
-    /* Small screens */
-    @media (max-width: 700px) {
-      .nav { grid-template-columns: repeat(5, minmax(80px, 1fr)); overflow-x: auto; padding-bottom: 8px; }
-      .nav-wrap { width: 96vw; }
-      .spine { left: -4vw; right: -4vw; }
+    /* PROJECTS */
+    .project{display:grid; grid-template-columns:minmax(220px,38%) 1fr; gap:26px; padding:26px 0; border-top:2px solid #e7eaee}
+    .project:first-child{border-top:none}
+    .thumb{background:#edf0f3; border:3px solid #000; border-radius:22px; min-height:240px; display:grid; place-items:center; overflow:hidden; aspect-ratio:16/9; min-height:240px;}
+    .project h3{color:var(--ink); margin:0 0 6px; font-size:28px}
+    .project p{margin:0 0 10px; font-size:18px}
+    .skill-list{font-size:18px; margin:6px 0 18px}
+    .skills-label{color:var(--c-projects); font-weight:700; letter-spacing:.5px}
+    .btn{display:inline-block; border:3px solid #000; padding:12px 18px; border-radius:12px; text-decoration:none; color:#fff; background:#000; font-weight:700}
+
+    /* SKILLS */
+    .cat{border-top:2px solid #e7eaee; padding-top:18px; margin-top:24px}
+    .cat h4{font-size:24px; margin:12px 0 18px; opacity:.9}
+    .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px}
+    .skill{display:flex; align-items:center; gap:16px; border:2.5px solid #e4e8ec; border-radius:16px; padding:16px 14px; background:#fff}
+    .skill img{width:42px; height:42px; object-fit:contain; border-radius:8px; background:#f1f3f5}
+    .skill span{font-size:22px}
+
+    /* EXPERIENCE & ARTICLES */
+    .xp{border-top:2px solid #e7eaee; padding:22px 0}
+    .xp h3{margin:0 0 6px}
+    .xp p{margin:0 0 12px; font-size:18px}
+
+    .link{font-weight:700; text-decoration:underline; cursor:pointer}
+
+    /* RESPONSIVE TWEAKS */
+    @media (max-width:780px){
+      .nav-rail{gap:16px; padding-bottom:56px}
+      .nav-card{width:44vw}
+      .project{grid-template-columns:1fr;}
     }
   </style>
 </head>
 <body>
-  <button id="home" class="home-btn" aria-label="Go to homepage" title="Home">
-    <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M3 11.5L12 4l9 7.5"/>
-      <path d="M5 10.8V20h14v-9.2"/>
-    </svg>
-  </button>
 
+  <!-- HOME BUTTON (returns to default homepage) -->
+  <button class="home-btn" title="Back to homepage" id="homeBtn" aria-label="Back to homepage">
+  <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+    <path d="M3 11.5L12 4l9 7.5" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M5 10.5V20h14v-9.5" fill="none" stroke="#000" stroke-width="2" stroke-linejoin="round"/>
+    <rect x="10" y="14" width="4" height="6" fill="#000" rx="1"/>
+  </svg>
+</button>
+
+  <!-- HERO / DEFAULT HOMEPAGE -->
   <header class="hero" id="hero">
-    <div>
-      <h1 class="title">Emmanuel Echefu</h1>
-      <p class="subtitle">Portfolio</p>
-
-      <div class="nav-wrap">
-        <div class="spine" aria-hidden="true"></div>
-        <nav class="nav" id="nav">
-          <!-- Each card: data-color controls accent, data-target links to a section -->
-          <div class="card" data-color="#72c7cf" data-target="#about">
-            <span class="icon" aria-hidden="true"> <!-- smile -->
-              <svg viewBox="0 0 24 24" fill="none" stroke="#72c7cf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="9"/>
-                <path d="M8 15c1.2 1 2.4 1.5 4 1.5s2.8-.5 4-1.5"/>
-                <circle cx="9" cy="10" r=".8"/>
-                <circle cx="15" cy="10" r=".8"/>
-              </svg>
-            </span>
-            <div class="label">about me</div>
-          </div>
-
-          <div class="card" data-color="#ff7474" data-target="#projects">
-            <span class="icon" aria-hidden="true"> <!-- briefcase -->
-              <svg viewBox="0 0 24 24" fill="none" stroke="#ff7474" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M9 6V4h6v2"/>
-                <rect x="3" y="6" width="18" height="12" rx="3"/>
-                <path d="M3 12h18"/>
-              </svg>
-            </span>
-            <div class="label">projects</div>
-          </div>
-
-          <div class="card" data-color="#ffc247" data-target="#skills">
-            <span class="icon" aria-hidden="true"> <!-- puzzle -->
-              <svg viewBox="0 0 24 24" fill="none" stroke="#ffc247" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M8 9h3a2 2 0 1 0-2-2V4H4v6h4z"/>
-                <path d="M16 9h4V4h-6v3a2 2 0 1 1-2 2h4z"/>
-                <path d="M8 15H4v6h6v-3a2 2 0 1 1 2-2H8z"/>
-              </svg>
-            </span>
-            <div class="label">skills</div>
-          </div>
-
-          <div class="card" data-color="#9a8cff" data-target="#experience">
-            <span class="icon" aria-hidden="true"> <!-- checklist -->
-              <svg viewBox="0 0 24 24" fill="none" stroke="#9a8cff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="4" y="3" width="16" height="18" rx="3"/>
-                <path d="M8 8h6M8 12h6M8 16h6"/>
-              </svg>
-            </span>
-            <div class="label">experience</div>
-          </div>
-
-          <div class="card" data-color="#59e59a" data-target="#articles">
-            <span class="icon" aria-hidden="true"> <!-- article -->
-              <svg viewBox="0 0 24 24" fill="none" stroke="#59e59a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="4" y="3" width="16" height="18" rx="2"/>
-                <path d="M8 7h8M8 11h8M8 15h5"/>
-              </svg>
-            </span>
-            <div class="label">articles</div>
-          </div>
-        </nav>
-      </div>
+    <h1>Emmanuel Echefu</h1>
+    <h2>Portfolio</h2>
+    <div class="quick-links">
+      <!-- Update these three links -->
+      <a class="chip" href="assets/cv.pdf" target="_blank" rel="noreferrer">CV</a>
+      <a class="chip" href="mailto:eman.echefu@gmail.com">✉️ Email</a>
+      <a class="chip" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">in</a>
     </div>
   </header>
 
-  <div class="nav-bar" aria-hidden="true"></div>
+  <!-- NAV RAIL (initially mid‑page; docks to top on click) -->
+  <div class="nav-wrap home-rail" id="navWrap">
+    <nav class="nav-rail" id="navRail">
+      <div class="rail-line" id="railLine"></div>
+      <div class="nav-card" data-target="about" data-color="var(--c-about)" style="--accent: var(--c-about)">
+        <span class="icon material-symbols-outlined">sentiment_satisfied</span>
+        <div class="label">about me</div>
+      </div>
+      <div class="nav-card" data-target="projects" data-color="var(--c-projects)" style="--accent: var(--c-projects)">
+        <span class="icon material-symbols-outlined">work</span>
+        <div class="label">projects</div>
+      </div>
+      <div class="nav-card" data-target="skills" data-color="var(--c-skills)" style="--accent: var(--c-skills)">
+        <span class="icon material-symbols-outlined">extension</span>
+        <div class="label">skills</div>
+      </div>
+      <div class="nav-card" data-target="experience" data-color="var(--c-experience)" style="--accent: var(--c-experience)">
+        <span class="icon material-symbols-outlined">handshake</span>
+        <div class="label">experience</div>
+      </div>
+      <div class="nav-card" data-target="articles" data-color="var(--c-articles)" style="--accent: var(--c-articles)">
+        <span class="icon material-symbols-outlined">newspaper</span>
+        <div class="label">articles</div>
+      </div>
+    </nav>
+  </div>
 
-  <main id="content">
-    <section id="about" class="hidden">
-      <h2>ABOUT ME</h2>
-      <p style="font-size: 20px; line-height: 1.8">My name is E. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      <p style="font-size: 20px; line-height: 1.8">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
+  <!-- SECTIONS -->
+  <main>
+    <section id="about">
+      <h2 class="sec-title" style="color:var(--c-about)">ABOUT ME</h2>
+      <div class="copy">
+        <p>My name is Emmanuel Echefu, and I’m a computer science student at the University of Nottingham with a strong interest in Artificial Intelligence.</p>
+        <p>I'm passionate about AI, robotics and honestly, anything to do with computer science. Alongside my studies, I run the Instagram page @everythingcompsci, where I share insights and the latest news in technology and computer science.</p>
+        <p>In my free time, I enjoy building small programming projects. Outside of coding, I like to unwind through competitive TEKKEN matches or by playing basketball and table tennis.</p>
+      </div>
     </section>
 
-    <section id="projects" class="hidden">
-      <h2>PROJECTS</h2>
-      <p>Here you can showcase featured work, with cards, links, and images. Replace this placeholder as you build it out.</p>
+    <section id="projects">
+      <h2 class="sec-title" style="color:var(--c-projects)">PROJECTS</h2>
+      <div id="projectsList"></div>
     </section>
 
-    <section id="skills" class="hidden">
-      <h2>SKILLS</h2>
-      <p>Languages, frameworks, tools — list or visualize them here.</p>
+    <section id="skills">
+      <h2 class="sec-title" style="color:var(--c-skills)">SKILLS</h2>
+      <div id="skillsWrap"></div>
     </section>
 
-    <section id="experience" class="hidden">
-      <h2>EXPERIENCE</h2>
-      <p>Company roles, responsibilities, and achievements.</p>
+    <section id="experience">
+      <h2 class="sec-title" style="color:var(--c-experience)">EXPERIENCE</h2>
+      <div id="xpWrap"></div>
     </section>
 
-    <section id="articles" class="hidden">
-      <h2>ARTICLES</h2>
-      <p>Writings, notes, or links to external publications.</p>
+    <section id="articles">
+      <h2 class="sec-title" style="color:var(--c-articles)">ARTICLES</h2>
+      <div id="articlesWrap"></div>
     </section>
   </main>
 
-  <script>
-    const root = document.documentElement;
-    const nav = document.getElementById('nav');
-    const cards = Array.from(nav.querySelectorAll('.card'));
-    const homeBtn = document.getElementById('home');
-    const sections = Array.from(document.querySelectorAll('main section'));
-    const body = document.body;
+<script>
+// ======== DATA YOU CAN EDIT EASILY ========
 
-    // --- Helper functions
-    function setAccent(hex) { root.style.setProperty('--accent', hex); }
 
-    function showSection(id) {
-      // hide all
-      sections.forEach(s => s.classList.add('hidden'));
-      const section = document.querySelector(id);
-      if (!section) return;
-      section.classList.remove('hidden');
-      // play a small fade in
-      section.classList.add('fade-enter');
-      requestAnimationFrame(() => {
-        section.classList.add('fade-enter-active');
-        section.addEventListener('transitionend', () => {
-          section.classList.remove('fade-enter', 'fade-enter-active');
-        }, { once: true });
-      });
-    }
+// Add new projects by pushing an object with {image,title,description,skills[],link}
+const PROJECTS = [
+  {
+    image: 'assets/project1.png',
+    title: 'AI Stock Forecasting Project - LSTM/GRU',
+    description: 'Built an interactive web app that predicts stock prices using deep learning (LSTM & GRU networks).\n The app pulls real time financial data from Yahoo Finance, preprocesses it into time series sequences, trains neural networks, then forecasts future prices.\n Deployed with Streamlit Cloud for easy user access.',
+    skills: ['Python','Deep Learning','Machine Learning','TensorFlow','Keras','Pandas','Numpy','Scikit-learn','Data Visualization','MLOps','Git','Github'],
+    link: 'https://emmanuelechefu-stock-forecast-project.streamlit.app/'
+  },
+  {
+    image: 'assets/placeholder-project.png',
+    title: 'Project 2 Title',
+    description: 'Another short description — what it does, what you used, and any results.',
+    skills: ['Python','p5.js','Web'],
+    link: 'https://example.com'
+  }
+];
 
-    // --- Hover accent behaviour
-    cards.forEach(card => {
-      card.addEventListener('mouseenter', () => setAccent(card.dataset.color));
-      card.addEventListener('mouseleave', () => {
-        // when docked keep current accent of active item; otherwise revert to default
-        const active = nav.querySelector('.card[aria-current="page"]');
-        setAccent(active ? active.dataset.color : '#72c7cf');
-      });
-    });
+// Skills are grouped by categories. Add/rename categories freely; add items as {img,name}
+const SKILL_CATEGORIES = [
+  {
+    category: 'Programming Languages',
+    items:[
+      {img:'assets/python.png',name:'Python'},
+      {img:'assets/js.png',name:'JavaScript'},
+      {img:'assets/html.png',name:'HTML'},
+      {img:'assets/css.png',name:'CSS'},
+      {img:'assets/java.png',name:'Java'},
+      {img:'assets/cplus.png',name:'C++'},
+      {img:'assets/c.png',name:'C'},
+    ]
+  },
+  {
+    category: 'Frameworks / Libraries',
+    items:[
+      {img:'assets/p5js.png',name:'p5.js'},
+      {img:'assets/nextjs.png',name:'next.js'},
+      {img:'assets/react.png',name:'react.js'},
+    ]
+  },
+  {
+    category: 'Machine Learning',
+    items:[
+      {img:'assets/na.png',name:'LSTMs'},
+      {img:'assets/na.png',name:'GRUs'},
+    ]
+  },
+  {
+    category: 'Tools / Platforms',
+    items:[
+      {img:'assets/git.png',name:'Git'},
+      {img:'assets/github.png',name:'GitHub'},
+      {img:'assets/vs.png',name:'VSCode'},
+      {img:'assets/repl.png',name:'Replit'},
+      {img:'assets/supabase.png',name:'Supabase'},
+    ]
+  }
+];
 
-    // --- Click sequence
-    let animating = false;
-    cards.forEach(card => {
-      card.addEventListener('click', async () => {
-        if (animating) return; animating = true;
+// Experience entries
+const EXPERIENCE = [
+  {
+    title:'(Databasing) Work experience - A2Dominion ',
+    description:'Worked with databases to support internal operations, using Microsoft Dynamics to perform data management, reporting, and query-based searches.\nAcquired insight on team management and Agile workflows from observing how technical teams coordinate.',
+    skills:['Microsoft Dynamics','Query Languages & Searching','CRM/ERP','Database Management','Agile Methodologies','Project Coordination']
+  },
+  {
+    title:'(Computer Graphics) Work Experience – Escape Studios',
+    description:'Gained proficiency in Adobe After Effects, Autodesk Maya, and Nuke, applying these tools to produce high-quality visual effects.\nDeveloped strong skills in precision-driven VFX integration and project management whilst learning valuable insight into the computer graphics industry.',
+    skills:['VFX Integration','Computer Graphics Fundamentals','Rendering Pipelines']
+  },
+  {
+    title:'Studying Computer Science at the University of Nottingham',
+    description:'Developing strong foundations in software engineering, algorithms, databases, and computer systems, with practical experience gained through programming projects and team-based coursework.',
+    skills:['Algorithms, Data Structures & Formal Reasoning','Networking & Operating Systems','Databases & Interfaces','Artificial Intelligence & Machine Learning','Ethics, Security & Professional Practices']
+  },
+];
 
-        // a) nudge selected card down
-        cards.forEach(c => c.classList.remove('selected'));
-        card.classList.add('selected');
+// Articles (title, summary, url)
+const ARTICLES = [
+  {title:'TBC', summary:'TBC.', url:'#'},
+  //{title:'Title 2', summary:'Short description of article… Lorem ipsum etc.', url:'#'}
+];
 
-        // b) dock the header/nav to the top (adds sticky spacing + shows home)
-        body.classList.add('dock');
+// ======== RENDERERS ========
+function el(tag, attrs = {}, ...children){
+  const node = document.createElement(tag);
+  Object.entries(attrs).forEach(([k,v])=>{
+    if(k==='class') node.className=v; else if(k==='html') node.innerHTML=v; else node.setAttribute(k,v);
+  });
+  children.flat().forEach(c=> node.appendChild(typeof c==='string'? document.createTextNode(c): c));
+  return node;
+}
 
-        // c) wait a little so the motion is perceptible
-        await new Promise(r => setTimeout(r, 600));
+function renderProjects(){
+  const wrap = document.getElementById('projectsList');
+  wrap.innerHTML='';
+  PROJECTS.forEach(p=>{
+    const item = el('div',{class:'project'},
+      el('div',{class:'thumb'}, el('img',{src:p.image, alt:p.title, style:'width:100%; height:100%; object-fit:cover; border-radius:18px;'})),
+      el('div',{},
+        el('h3',{},p.title),
+        el('p',{ class:'project-description' }, p.description),
+        el('div',{class:'skill-list'}, 
+            // 'SKILLS USED: ', 
+            // el('span',{}, p.skills.join(' • '))
+            el('span',{class:'skills-label'},'SKILLS USED:'),' ',
+            el('div',{}, ''+p.skills.join(' - '))
+        ),
+        el('a',{class:'btn',href:p.link,target:'_blank',rel:'noreferrer'},'TRY PROJECT')
+      )
+    );
+    wrap.appendChild(item);
+  });
+}
 
-        // d) mark current, set base accent, and show the section
-        cards.forEach(c => c.removeAttribute('aria-current'));
-        card.setAttribute('aria-current', 'page');
-        setAccent(card.dataset.color);
-        showSection(card.dataset.target);
+function renderSkills(){
+  const wrap = document.getElementById('skillsWrap');
+  wrap.innerHTML='';
+  SKILL_CATEGORIES.forEach(cat=>{
+    const section = el('div',{class:'cat'},
+      el('h4',{},cat.category),
+      el('div',{class:'grid'},
+        cat.items.map(s=> el('div',{class:'skill'}, el('img',{src:s.img,alt:s.name}), el('span',{},s.name)))
+      )
+    );
+    wrap.appendChild(section);
+  });
+}
 
-        // e) scroll into view of the chosen section
-        document.querySelector(card.dataset.target).scrollIntoView({ behavior: 'smooth', block: 'start' });
+function renderExperience(){
+  const wrap = document.getElementById('xpWrap');
+  wrap.innerHTML='';
+  EXPERIENCE.forEach(x=>{
+    const div = el('div',{class:'xp'},
+      el('h3',{},x.title),
+      //el('p',{},x.description),
+      el('p',{ class:'x-description' }, x.description),
+      el('div',{},'Relevant skills'),
+      el('div',{},'\n- '+x.skills.join('\n- '))
+    );
+    wrap.appendChild(div);
+  });
+}
 
-        // f) release the nudge slightly after scroll starts
-        setTimeout(() => card.classList.remove('selected'), 500);
-        setTimeout(() => { animating = false; }, 900);
-      });
-    });
+function renderArticles(){
+  const wrap = document.getElementById('articlesWrap');
+  wrap.innerHTML='';
+  ARTICLES.forEach(a=>{
+    const div = el('div',{class:'xp'},
+      el('h3',{},a.title),
+      el('p',{},a.summary),
+      el('a',{class:'link',href:a.url,target:'_blank',rel:'noreferrer'},'CLICK TO READ')
+    );
+    wrap.appendChild(div);
+  });
+}
 
-    // Home behaviour — restore the landing layout
-    homeBtn.addEventListener('click', () => {
-      body.classList.remove('dock');
-      cards.forEach(c => c.removeAttribute('aria-current'));
-      setAccent('#72c7cf');
-      sections.forEach(s => s.classList.add('hidden'));
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  </script>
+renderProjects();
+renderSkills();
+renderExperience();
+renderArticles();
+
+// ======== NAV INTERACTION & STATE ========
+const navRail = document.getElementById('navRail');
+const navWrap = document.getElementById('navWrap');
+const railLine = document.getElementById('railLine');
+const hero = document.getElementById('hero');
+const homeBtn = document.getElementById('homeBtn');
+
+const cards = Array.from(document.querySelectorAll('.nav-card'));
+let currentSection = null; // id string
+let docked = false;
+
+function setRailColor(color){
+  railLine.style.background = color;
+  cards.forEach(c=> c.style.borderColor = color);
+}
+
+function clearRailColor(){
+  railLine.style.background = 'var(--line)';
+  cards.forEach(c=> c.style.borderColor = 'var(--line)');
+}
+
+cards.forEach(card=>{
+  card.addEventListener('mouseenter', ()=>{
+    setRailColor(card.dataset.color);
+    // Grey out the other icons/labels but keep cards opaque
+    cards.forEach(c=> c.classList.add('dimmed'));
+    card.classList.remove('dimmed');
+    card.classList.add('hovering');
+  });
+  card.addEventListener('mouseleave', ()=>{
+    card.classList.remove('hovering');
+    cards.forEach(c=> c.classList.remove('dimmed'));
+    if(!docked) clearRailColor();
+  });
+  card.addEventListener('click', async()=>{
+    const target = card.dataset.target;
+    await launchSequence(card, target);
+  });
+
+  card.addEventListener('mouseleave', ()=>{
+    card.classList.remove('hovering');
+    cards.forEach(c=> c.classList.remove('dimmed'));
+    if(!docked) clearRailColor();
+  });
+  card.addEventListener('click', async()=>{
+    const target = card.dataset.target;
+    await launchSequence(card, target);
+  });
+});
+
+async function launchSequence(card, target){
+  // 1) subtle drop
+  card.classList.add('drop');
+  setRailColor(card.dataset.color);
+  await wait(250);
+  card.classList.remove('drop');
+
+  // 2) dock bar to top with slide animation
+  dockToTop();
+  setRailColor(card.dataset.color);
+  await wait(600);
+
+  // 3) reveal target section
+  openSection(target);
+}
+
+function dockToTop() {
+  if (docked) return;
+  navWrap.classList.remove('home-rail');
+  navWrap.classList.add('nav-bar', 'show');
+  docked = true;
+  hero.style.display = 'none';
+}
+
+function undockToHome() {
+  navWrap.classList.remove('show', 'nav-bar');
+  navWrap.classList.add('home-rail');
+  docked = false;
+  clearRailColor();
+
+  // hide sections
+  document.querySelectorAll('main section').forEach(s => {
+    s.classList.remove('active');
+    s.style.display = 'none';
+  });
+
+  // show & re-animate hero
+  hero.style.display = 'flex';
+  hero.style.opacity = '0';
+  hero.style.transform = 'translateY(14px)';
+  requestAnimationFrame(() => {
+    hero.style.animation = 'heroIn .8s ease forwards .2s';
+  });
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function openSection(id){
+  document.querySelectorAll('main section').forEach(s=>{
+    if(s.id===id){ s.style.display='block'; s.classList.add('active'); }
+    else { s.classList.remove('active'); s.style.display='none'; }
+  });
+  currentSection = id;
+  // make sure we’re at the top of the page content
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function wait(ms){return new Promise(r=>setTimeout(r,ms));}
+
+homeBtn.addEventListener('click', undockToHome);
+
+</script>
 </body>
 </html>
