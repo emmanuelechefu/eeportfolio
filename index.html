@@ -9,7 +9,32 @@
     gtag('js', new Date());
 
     gtag('config', 'G-SJ7QQ38Z3B');
-  </script>  
+  </script>
+
+  <script>
+    // ---- GA4 helpers for a single-file site ----
+    const GA_ID = 'G-SJ7QQ38Z3B'; // keep in sync with the tag above
+
+    // Map section ids to virtual paths (edit labels if you want)
+    const GA_PATHS = {
+      home: '/',
+      about: '/about',
+      projects: '/projects',
+      skills: '/skills',
+      experience: '/experience',
+      articles: '/articles'
+    };
+
+    function sendPageView(path, title) {
+      // GA4-friendly manual page_view for SPA-style navigation
+      gtag('event', 'page_view', {
+        page_title: title || document.title,
+        page_location: location.origin + path,
+        page_path: path
+      });
+    }
+  </script>
+ 
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Emmanuel Echefu • Portfolio</title>
@@ -477,6 +502,9 @@ function undockToHome() {
     hero.style.animation = 'heroIn .8s ease forwards .2s';
   });
 
+  // google analytics log for home
+  sendPageView(GA_PATHS.home, 'Home');
+
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -486,6 +514,8 @@ function openSection(id){
     else { s.classList.remove('active'); s.style.display='none'; }
   });
   currentSection = id;
+  //google analytics log
+  sendPageView(GA_PATHS[id] || ('/' + id), id.toUpperCase());
   // make sure we’re at the top of the page content
   window.scrollTo({top:0, behavior:'smooth'});
 }
