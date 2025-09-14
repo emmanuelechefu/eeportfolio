@@ -1,0 +1,4 @@
+ADD:
+Colour to border the homepage, same colour as hover item, will make it look less "weak" and more polished
+Make Transitions smoother without the little jank jump
+Try to Involve react or different framework like multiple htmls
