@@ -215,7 +215,7 @@
       <h2 class="sec-title" style="color:var(--c-about)">ABOUT ME</h2>
       <div class="copy">
         <p>My name is Emmanuel Echefu, and I’m a computer science student at the University of Nottingham with a strong interest in Artificial Intelligence.</p>
-        <p>I'm passionate about AI, robotics and honestly, anything to do with computer science. Alongside my studies, I run the Instagram page @everythingcompsci, where I share insights and the latest news in technology and computer science.</p>
+        <p>I'm passionate about AI, robotics and honestly, anything to do with computer science. Alongside my studies, I enjoy researching and writing about the latest news in tech and computer science.</p>
         <p>In my free time, I enjoy building small programming projects. Outside of coding, I like to unwind through competitive TEKKEN matches or by playing basketball and table tennis.</p>
       </div>
     </section>
@@ -263,11 +263,18 @@ const PROJECTS = [
   },
   {
     image: 'assets/project3.png',
+    title: 'Chrome Extension - No YouTube Mix De-Fluffer',
+    description: 'A Chrome extension that cleans up YouTube links by stripping out auto-generated Mix playlists and autoplay parameters. Built with Manifest V3, it uses the Declarative Net Request API and webNavigation listeners to normalize short youtu.be links, remove start_radio flags, and block “Mix” playlists (list=RD…). This ensures users are redirected to the intended standalone video without unwanted continuous playback.',
+    skills: ['JavaScript','JSON','Chrome Extension Development','Chrome Extension APIs','webNavigation API','tabs API','Event-driven architecture',],
+    link: 'https://github.com/emmanuelechefu/No-Automatic-Youtube-Mix-Chrome-Extension'
+  },
+  {
+    image: 'assets/project4.png',
     title: '100s Test - Randomly Generating Maths Game',
     description: 'A single-page math game built with HTML, CSS, and JavaScript. It uses modular views for menus, setup, gameplay, and leaderboards, with dynamic DOM updates controlling state. Highscores and leaderboards are persisted in localStorage, timers run via setInterval, and math problems are generated randomly within specified ranges. Sound effects are implemented using the Web Audio API.',
     skills: ['HTML','CSS','Javascript','Web Audio API','DOM API','Front-end web development','State management/Dynamic UI rendering','UI/UX design',],
     link: 'https://emmanuelechefu.github.io/100s-test/'
-  }
+  },
 ];
 
 // Skills are grouped by categories. Add/rename categories freely; add items as {img,name}
