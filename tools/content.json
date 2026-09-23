@@ -1,0 +1,402 @@
+{
+  "PROJECTS": [
+    {
+      "image": "assets/project1.png",
+      "title": "Neural Stock Forecasting",
+      "description": "An interactive web app that predicts stock prices using deep learning (LSTM & GRU networks).\n The app pulls real time financial data from Yahoo Finance, preprocesses it into time series sequences, trains neural networks, then forecasts future prices.\n Deployed with Streamlit Cloud for easy user access.",
+      "skills": [
+        "Python",
+        "Deep Learning",
+        "Machine Learning",
+        "TensorFlow",
+        "Keras",
+        "Pandas",
+        "Numpy",
+        "Scikit-learn",
+        "Data Visualization",
+        "MLOps",
+        "Git",
+        "Github"
+      ],
+      "link": "https://emmanuelechefu-stock-forecast-project.streamlit.app/",
+      "id": "stock-forecast",
+      "summary": "A Streamlit app that uses LSTM and GRU networks to forecast stock prices from Yahoo Finance time-series data.",
+      "action": "Try the project",
+      "pinned": true
+    },
+    {
+      "id": "rsvp-reader",
+      "title": "RSVP Reading Interface",
+      "image": "assets/rsvp-reading-tool.png",
+      "summary": "A browser-based implementation of Rapid Serial Visual Presentation (RSVP), displaying words sequentially at adjustable rates with fixed focal-character alignment. Playback navigation, progress tracking, and persistent text storage support exploration of digital reading interfaces.",
+      "skills": [
+        "JavaScript",
+        "HTML & CSS",
+        "Human\u2013Computer Interaction",
+        "Web Storage API"
+      ],
+      "link": "https://emmanuelechefu.github.io/RSVP-Reading-Tool/",
+      "action": "Try the project",
+      "pinned": false,
+      "new": true
+    },
+    {
+      "image": "assets/project2.png",
+      "title": "Repository Navigation Tool",
+      "description": "A Python-based command-line tool that generates a hierarchical tree of a repository and integrates with VS Code for file access. It uses recursive directory traversal with depth control to create the tree and system-level process management to open files externally. Employs cross-platform abstractions to handle file I/O, process execution, and error handling consistently across Windows, macOS, and Linux.",
+      "skills": [
+        "Python",
+        "CLI design",
+        "Operating Systems",
+        "Systems Programming",
+        "Modular program structure",
+        "Cross-platform compatibility"
+      ],
+      "link": "https://github.com/emmanuelechefu/repo-tree-manager",
+      "id": "repo-manager",
+      "summary": "A cross-platform Python CLI that displays repository trees, controls traversal depth, and opens files in VS Code.",
+      "action": "View on GitHub",
+      "pinned": false
+    },
+    {
+      "image": "assets/project3.png",
+      "title": "YouTube Playback Control",
+      "description": "A Chrome extension that cleans up YouTube links by stripping out auto-generated Mix playlists and autoplay parameters. Built with Manifest V3, it uses the Declarative Net Request API and webNavigation listeners to normalize short youtu.be links, remove start_radio flags, and block \u201cMix\u201d playlists (list=RD\u2026). This ensures users are redirected to the intended standalone video without unwanted continuous playback.",
+      "skills": [
+        "JavaScript",
+        "JSON",
+        "Chrome Extension Development",
+        "Chrome Extension APIs",
+        "webNavigation API",
+        "tabs API",
+        "Event-driven architecture"
+      ],
+      "link": "https://github.com/emmanuelechefu/No-Automatic-Youtube-Mix-Chrome-Extension",
+      "id": "youtube-extension",
+      "summary": "A Manifest V3 Chrome extension that removes Mix playlists and autoplay parameters from YouTube links.",
+      "action": "View on GitHub",
+      "pinned": false
+    },
+    {
+      "image": "assets/project4.png",
+      "title": "Procedural Arithmetic Practice",
+      "description": "A single-page math game built with HTML, CSS, and JavaScript. It uses modular views for menus, setup, gameplay, and leaderboards, with dynamic DOM updates controlling state. Highscores and leaderboards are persisted in localStorage, timers run via setInterval, and math problems are generated randomly within specified ranges. Sound effects are implemented using the Web Audio API.",
+      "skills": [
+        "HTML",
+        "CSS",
+        "Javascript",
+        "Web Audio API",
+        "DOM API",
+        "Front-end web development",
+        "State management/Dynamic UI rendering",
+        "UI/UX design"
+      ],
+      "link": "https://emmanuelechefu.github.io/100s-test/",
+      "id": "100s-test",
+      "summary": "A randomly generated maths game with configurable rounds, local leaderboards, and Web Audio sound effects.",
+      "action": "Try the project",
+      "pinned": false
+    }
+  ],
+  "SKILL_CATEGORIES": [
+    {
+      "category": "Programming Languages",
+      "items": [
+        {
+          "name": "Python"
+        },
+        {
+          "name": "JavaScript"
+        },
+        {
+          "name": "HTML"
+        },
+        {
+          "name": "CSS"
+        },
+        {
+          "name": "Java"
+        },
+        {
+          "name": "C++"
+        },
+        {
+          "name": "C"
+        },
+        {
+          "name": "Lua"
+        },
+        {
+          "name": "SQL"
+        }
+      ]
+    },
+    {
+      "category": "Frameworks & Tools",
+      "items": [
+        {
+          "name": "React"
+        },
+        {
+          "name": "Next.js"
+        },
+        {
+          "name": "Node.js"
+        },
+        {
+          "name": "p5.js"
+        },
+        {
+          "name": "Streamlit"
+        },
+        {
+          "name": "Git"
+        },
+        {
+          "name": "GitHub"
+        },
+        {
+          "name": "VS Code"
+        },
+        {
+          "name": "Replit"
+        },
+        {
+          "name": "Supabase"
+        }
+      ]
+    },
+    {
+      "category": "Machine Learning & Data",
+      "items": [
+        {
+          "name": "Machine learning"
+        },
+        {
+          "name": "Deep learning"
+        },
+        {
+          "name": "LSTM & GRU networks"
+        },
+        {
+          "name": "TensorFlow"
+        },
+        {
+          "name": "Keras"
+        },
+        {
+          "name": "Pandas"
+        },
+        {
+          "name": "NumPy"
+        },
+        {
+          "name": "scikit-learn"
+        },
+        {
+          "name": "Time-series preprocessing"
+        },
+        {
+          "name": "Data visualization"
+        },
+        {
+          "name": "Streamlit Cloud deployment"
+        }
+      ]
+    },
+    {
+      "category": "Web & Interface Development",
+      "items": [
+        {
+          "name": "Front-end development"
+        },
+        {
+          "name": "Responsive interfaces"
+        },
+        {
+          "name": "UI/UX design"
+        },
+        {
+          "name": "Human\u2013computer interaction"
+        },
+        {
+          "name": "DOM API"
+        },
+        {
+          "name": "Web Storage API"
+        },
+        {
+          "name": "Web Audio API"
+        },
+        {
+          "name": "State management"
+        },
+        {
+          "name": "Chrome extensions (Manifest V3)"
+        },
+        {
+          "name": "webNavigation & tabs APIs"
+        },
+        {
+          "name": "Declarative Net Request API"
+        },
+        {
+          "name": "JSON"
+        }
+      ]
+    },
+    {
+      "category": "Systems & CS Foundations",
+      "items": [
+        {
+          "name": "CLI design"
+        },
+        {
+          "name": "Systems programming"
+        },
+        {
+          "name": "Recursive directory traversal"
+        },
+        {
+          "name": "File I/O & process management"
+        },
+        {
+          "name": "Cross-platform development"
+        },
+        {
+          "name": "Modular programming"
+        },
+        {
+          "name": "Algorithms & data structures"
+        },
+        {
+          "name": "Operating systems"
+        },
+        {
+          "name": "Networking foundations"
+        },
+        {
+          "name": "Formal reasoning"
+        }
+      ]
+    },
+    {
+      "category": "Databases & Business Systems",
+      "items": [
+        {
+          "name": "Database design & management"
+        },
+        {
+          "name": "SQL queries & optimization"
+        },
+        {
+          "name": "Data integrity"
+        },
+        {
+          "name": "Database backups & maintenance"
+        },
+        {
+          "name": "Microsoft Dynamics"
+        },
+        {
+          "name": "CRM/ERP systems"
+        },
+        {
+          "name": "Data reporting"
+        }
+      ]
+    },
+    {
+      "category": "Graphics & Media",
+      "items": [
+        {
+          "name": "Adobe After Effects"
+        },
+        {
+          "name": "Autodesk Maya"
+        },
+        {
+          "name": "Nuke"
+        },
+        {
+          "name": "VFX integration"
+        },
+        {
+          "name": "Colour grading"
+        },
+        {
+          "name": "Rendering pipelines"
+        },
+        {
+          "name": "Graphic design"
+        },
+        {
+          "name": "Video production & live streaming"
+        },
+        {
+          "name": "Camera & audio operation"
+        }
+      ]
+    },
+    {
+      "category": "Project & Team Practice",
+      "items": [
+        {
+          "name": "Software prototyping"
+        },
+        {
+          "name": "Project coordination"
+        },
+        {
+          "name": "Team collaboration"
+        },
+        {
+          "name": "Technical troubleshooting"
+        },
+        {
+          "name": "Agile workflow awareness"
+        },
+        {
+          "name": "Security & professional practice foundations"
+        }
+      ]
+    }
+  ],
+  "EXPERIENCE": [
+    {
+      "title": "(Databasing) Work experience - A2Dominion ",
+      "description": "Worked with databases to support internal operations, using Microsoft Dynamics to perform data management, reporting, and query-based searches.\nAcquired insight on team management and Agile workflows from observing how technical teams coordinate.",
+      "skills": [
+        "Microsoft Dynamics",
+        "Query Languages & Searching",
+        "CRM/ERP",
+        "Database Management",
+        "Agile Methodologies",
+        "Project Coordination"
+      ],
+      "image": "assets/a2dominion.png"
+    },
+    {
+      "title": "(Computer Graphics) Work Experience \u2013 Escape Studios",
+      "description": "Gained proficiency in Adobe After Effects, Autodesk Maya, and Nuke, applying these tools to produce high-quality visual effects.\nDeveloped strong skills in precision-driven VFX integration and project management whilst learning valuable insight into the computer graphics industry.",
+      "skills": [
+        "VFX Integration",
+        "Computer Graphics Fundamentals",
+        "Rendering Pipelines"
+      ],
+      "image": "assets/escape-studios.png"
+    },
+    {
+      "title": "Studying Computer Science at the University of Nottingham",
+      "description": "Developing strong foundations in software engineering, algorithms, databases, and computer systems, with practical experience gained through programming projects and team-based coursework.",
+      "skills": [
+        "Algorithms, Data Structures & Formal Reasoning",
+        "Networking & Operating Systems",
+        "Databases & Interfaces",
+        "Artificial Intelligence & Machine Learning",
+        "Ethics, Security & Professional Practices"
+      ],
+      "image": "assets/university-of-nottingham.png"
+    }
+  ]
+}
