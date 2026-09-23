@@ -51,3 +51,7 @@ In this extracted folder run:
 Open http://localhost:8000/ in a browser. Do not double-click index.html: the site uses root-relative paths intended for a web server at the domain root. This package targets emmanuelechefu.com, not a GitHub project URL under /repository-name/.
 
 The font stylesheet uses Google Fonts. System-font fallbacks work if that service is unavailable.
+
+## Favicon removal
+
+The custom favicon has been removed from all six pages and the optional generator. Replace all six HTML pages when updating. If the old icon persists, check a private browsing window because browser tabs can cache favicons.
